@@ -1,4 +1,4 @@
-FROM ubuntu-14.04
+FROM ubuntu:14.04
 
 
 ENV WEB_DOCUMENT_ROOT  /application/code/
