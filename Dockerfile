@@ -1,7 +1,13 @@
-FROM ubuntu:14.04
-RUN apt-get update && apt-get upgrade
-RUN apt-get install -y openssh-server apache2 supervisor
-RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-EXPOSE 22 80
-CMD ["/usr/bin/supervisord"]
+From ubuntu:14.04
+RUN apt-get update
+RUN apt-get install -y apache2
+RUN mkdir /var/lock/apache2
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_PID_FILE /var/run/apache2.pid
+ENV APACHE_RUN_DIR /var/run/apache2
+ENV APACHE_LOCK_DIR /var/lock/apache2
+ENV APACHE_LOG-DIR /var/log/apache2
+ENV LANG C
+CMD ["/usr/sbin/apache2", "-D",, "FOREGROUND"]
+EXPOSE 80
