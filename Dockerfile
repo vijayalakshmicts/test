@@ -1,6 +1,5 @@
 FROM ubuntu:14.04
 
-
 ENV WEB_DOCUMENT_ROOT  /application/code/
 ENV WEB_DOCUMENT_INDEX index.php
 ENV WEB_ALIAS_DOMAIN   *.vm
